@@ -9,6 +9,8 @@
 package com.example.android.justjava;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -74,7 +76,13 @@ public class MainActivity extends AppCompatActivity {
 
         int price = calculatePrice(quantity, addWhippedCream, addChocolate);
 
-        displayMessage(createOrderSummary(price, addWhippedCream, addChocolate, name));
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, String.format("JustJava Order for %1$s", name));
+        emailIntent.putExtra(Intent.EXTRA_TEXT, createOrderSummary(price, addWhippedCream, addChocolate, name));
+        if (emailIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(emailIntent);
+        }
     }
 
 
@@ -120,13 +128,5 @@ public class MainActivity extends AppCompatActivity {
     private void displayQuantity(int number) {
         TextView quantityTextView = findViewById(R.id.text_quantity);
         quantityTextView.setText("" + number);
-    }
-
-    /**
-     * This method displays the given message on the screen.
-     */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = findViewById(R.id.text_order_summary);
-        orderSummaryTextView.setText(message);
     }
 }
