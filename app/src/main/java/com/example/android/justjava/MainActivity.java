@@ -11,7 +11,10 @@ package com.example.android.justjava;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -32,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public void increment(View view) {
         quantity++;
 
-        display(quantity);
+        displayQuantity(quantity);
     }
 
     public void decrement(View view) {
@@ -40,29 +43,63 @@ public class MainActivity extends AppCompatActivity {
             quantity--;
         }
 
-        display(quantity);
+        displayQuantity(quantity);
     }
 
     /**
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        displayPrice(quantity * 5);
+        CheckBox chkWhippedCream = findViewById(R.id.check_whipped_cream);
+        boolean addWhippedCream = chkWhippedCream.isChecked();
+
+        CheckBox chkChocolate = findViewById(R.id.check_chocolate);
+        boolean addChocolate = chkChocolate.isChecked();
+
+        EditText etName = findViewById(R.id.edit_name);
+        Editable name = etName.getText();
+
+        displayMessage(createOrderSummary(calculatePrice(quantity), addWhippedCream, addChocolate, name));
+    }
+
+
+    /**
+     * Creates a summary of the Order.
+     *
+     * @param price is the price total for coffee
+     */
+    private String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolate, Editable name) {
+        String priceMessage = String.format("Name: %1$s\n", name);
+        priceMessage = priceMessage + String.format("Add whipped cream? %1$s\n", addWhippedCream);
+        priceMessage = priceMessage + String.format("Add chocolate? %1$s\n", addChocolate);
+        priceMessage = priceMessage + String.format("Quantity: %1$s\n", quantity);
+        priceMessage = priceMessage + String.format("Total: %1$s\nThank you!", NumberFormat.getCurrencyInstance().format(price));
+
+        return priceMessage;
+    }
+
+    /**
+     * Calculates the price of the order.
+     *
+     * @param quantity is the number of cups of coffee ordered
+     */
+    private int calculatePrice(int quantity) {
+        return quantity * 5;
     }
 
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void display(int number) {
-        TextView quantityTextView = findViewById(R.id.quantity_text_view);
+    private void displayQuantity(int number) {
+        TextView quantityTextView = findViewById(R.id.text_quantity);
         quantityTextView.setText("" + number);
     }
 
     /**
-     * This method displays the given price on the screen.
+     * This method displays the given message on the screen.
      */
-    private void displayPrice(int number) {
-        TextView priceTextView = findViewById(R.id.price_text_view);
-        priceTextView.setText(String.format("Total: %1$s\nThank you!", NumberFormat.getCurrencyInstance().format(number)));
+    private void displayMessage(String message) {
+        TextView orderSummaryTextView = findViewById(R.id.text_order_summary);
+        orderSummaryTextView.setText(message);
     }
 }
