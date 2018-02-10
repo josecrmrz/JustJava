@@ -59,7 +59,9 @@ public class MainActivity extends AppCompatActivity {
         EditText etName = findViewById(R.id.edit_name);
         Editable name = etName.getText();
 
-        displayMessage(createOrderSummary(calculatePrice(quantity), addWhippedCream, addChocolate, name));
+        int price = calculatePrice(quantity, addWhippedCream, addChocolate);
+
+        displayMessage(createOrderSummary(price, addWhippedCream, addChocolate, name));
     }
 
 
@@ -81,10 +83,22 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Calculates the price of the order.
      *
-     * @param quantity is the number of cups of coffee ordered
+     * @param quantity        is the number of cups of coffee ordered
+     * @param addWhippedCream if the user wants whipped cream
+     * @param addChocolate    if the user wants chocolate
      */
-    private int calculatePrice(int quantity) {
-        return quantity * 5;
+    private int calculatePrice(int quantity, boolean addWhippedCream, boolean addChocolate) {
+        int price = quantity * 5;
+
+        if (addWhippedCream) {
+            price += 1;
+        }
+
+        if (addChocolate) {
+            price += 2;
+        }
+
+        return price;
     }
 
     /**
