@@ -14,16 +14,16 @@
             android:id="@+id/edit_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
             android:hint="@string/hint_name"
             android:inputType="textCapWords" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="@dimen/dp_16"
             android:text="@string/toppings"
             android:textAllCaps="true" />
 
@@ -36,7 +36,7 @@
             android:paddingLeft="@dimen/dp_24"
             android:paddingRight="@dimen/dp_24"
             android:text="@string/chocolate"
-            android:textSize="16sp" />
+            android:textSize="@dimen/sp_16" />
 
         <CheckBox
             android:id="@+id/check_whipped_cream"
@@ -47,12 +47,12 @@
             android:paddingLeft="@dimen/dp_24"
             android:paddingRight="@dimen/dp_24"
             android:text="@string/whipped_cream"
-            android:textSize="16sp" />
+            android:textSize="@dimen/sp_16" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_margin="@dimen/dp_16"
             android:text="@string/quantity"
             android:textAllCaps="true" />
 
@@ -62,9 +62,9 @@
             android:orientation="horizontal">
 
             <Button
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginLeft="16dp"
+                android:layout_width="@dimen/dp_48"
+                android:layout_height="@dimen/dp_48"
+                android:layout_marginLeft="@dimen/dp_16"
                 android:layout_marginStart="@dimen/dp_16"
                 android:onClick="decrement"
                 android:text="@string/decrement" />
@@ -73,15 +73,15 @@
                 android:id="@+id/text_quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_8"
                 android:text="@string/number_of_coffees"
                 android:textColor="@android:color/black"
-                android:textSize="16sp" />
+                android:textSize="@dimen/sp_16" />
 
             <Button
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="@dimen/dp_48"
+                android:layout_height="@dimen/dp_48"
                 android:onClick="increment"
                 android:text="@string/increment" />
 
