@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Just Java</string>
+    <string name="hint_name">Name</string>
+    <string name="toppings">Toppings</string>
+    <string name="chocolate">Chocolate</string>
+    <string name="whipped_cream">Whipped Cream</string>
+    <string name="quantity">quantity</string>
+    <string name="decrement">-</string>
+    <string name="increment">+</string>
+    <string name="number_of_coffees">1</string>
+    <string name="order">order</string>
+    <string name="name">Name: %1$s\n</string>
+    <string name="add_whipped_cream">Add whipped cream? %1$b\n</string>
+    <string name="add_chocolate">Add chocolate? %1$b\n</string>
+    <string name="quantity_string">Quantity: %1$d\n</string>
+    <string name="thank_you">Total: %1$s\nThank you!</string>
+    <string name="order_summary_email_subject">JustJava Order for %1$s</string>
 </resources>

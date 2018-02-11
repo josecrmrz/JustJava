@@ -17,39 +17,43 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="16dp"
-            android:hint="Name"
+            android:hint="@string/hint_name"
             android:inputType="textCapWords" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="Toppings"
+            android:text="@string/toppings"
             android:textAllCaps="true" />
 
         <CheckBox
             android:id="@+id/check_chocolate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:paddingLeft="24dp"
-            android:text="Chocolate"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginStart="@dimen/dp_16"
+            android:paddingLeft="@dimen/dp_24"
+            android:paddingRight="@dimen/dp_24"
+            android:text="@string/chocolate"
             android:textSize="16sp" />
 
         <CheckBox
             android:id="@+id/check_whipped_cream"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:paddingLeft="24dp"
-            android:text="Whipped Cream"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginStart="@dimen/dp_16"
+            android:paddingLeft="@dimen/dp_24"
+            android:paddingRight="@dimen/dp_24"
+            android:text="@string/whipped_cream"
             android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="quantity"
+            android:text="@string/quantity"
             android:textAllCaps="true" />
 
         <LinearLayout
@@ -61,8 +65,9 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginLeft="16dp"
+                android:layout_marginStart="@dimen/dp_16"
                 android:onClick="decrement"
-                android:text="-" />
+                android:text="@string/decrement" />
 
             <TextView
                 android:id="@+id/text_quantity"
@@ -70,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
-                android:text="2"
+                android:text="@string/number_of_coffees"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
 
@@ -78,16 +83,17 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:onClick="increment"
-                android:text="+" />
+                android:text="@string/increment" />
 
         </LinearLayout>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
             android:onClick="submitOrder"
-            android:text="order" />
+            android:text="@string/order" />
     </LinearLayout>
 </ScrollView>

@@ -1,11 +1,3 @@
-/**
- * IMPORTANT: Make sure you are using the correct package name.
- * This example uses the package name:
- * package com.example.android.justjava
- * If you get an error when copying this code into Android studio, update it to match teh package name found
- * in the project's AndroidManifest.xml file.
- **/
-
 package com.example.android.justjava;
 
 
@@ -21,13 +13,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
 
-    int quantity = 2;
+    int quantity = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
         emailIntent.setData(Uri.parse("mailto:"));
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, String.format("JustJava Order for %1$s", name));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, String.format(getString(R.string.order_summary_email_subject), name));
         emailIntent.putExtra(Intent.EXTRA_TEXT, createOrderSummary(price, addWhippedCream, addChocolate, name));
         if (emailIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(emailIntent);
@@ -92,11 +85,11 @@ public class MainActivity extends AppCompatActivity {
      * @param price is the price total for coffee
      */
     private String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolate, Editable name) {
-        String priceMessage = String.format("Name: %1$s\n", name);
-        priceMessage = priceMessage + String.format("Add whipped cream? %1$s\n", addWhippedCream);
-        priceMessage = priceMessage + String.format("Add chocolate? %1$s\n", addChocolate);
-        priceMessage = priceMessage + String.format("Quantity: %1$s\n", quantity);
-        priceMessage = priceMessage + String.format("Total: %1$s\nThank you!", NumberFormat.getCurrencyInstance().format(price));
+        String priceMessage = String.format(getString(R.string.name), name);
+        priceMessage = priceMessage + String.format(getString(R.string.add_whipped_cream), addWhippedCream);
+        priceMessage = priceMessage + String.format(getString(R.string.add_chocolate), addChocolate);
+        priceMessage = priceMessage + String.format(getString(R.string.quantity_string), quantity);
+        priceMessage = priceMessage + String.format(getString(R.string.thank_you), NumberFormat.getCurrencyInstance().format(price));
 
         return priceMessage;
     }
@@ -127,6 +120,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private void displayQuantity(int number) {
         TextView quantityTextView = findViewById(R.id.text_quantity);
-        quantityTextView.setText("" + number);
+        quantityTextView.setText(String.format(Locale.getDefault(), "%1$d", number));
     }
 }
